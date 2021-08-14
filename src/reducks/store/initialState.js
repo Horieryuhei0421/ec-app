@@ -1,6 +1,7 @@
 const initialState = {
   users: {
     initialState: false,
+    role: "",
     uid: "",
     username: ""
   }
