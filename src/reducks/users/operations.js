@@ -2,6 +2,7 @@ import { signInAction } from "./actions";
 import { push } from "connected-react-router";
 import { auth, db, FirebaseTimestamp } from "../../firebase/index"
 
+
 export const listenAuthState = () => {
   return async (dispatch) => {
     return auth.onAuthStateChanged(user => {
@@ -17,7 +18,6 @@ export const listenAuthState = () => {
               uid: uid,
               username: data.username
             }))
-            dispatch(push("/"))
           })
       } else {
         dispatch(push("/signin"))
