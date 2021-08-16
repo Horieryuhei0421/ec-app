@@ -8,7 +8,6 @@ const Router = () => {
     <Switch>
       <Route exact path={"/signup"} component={SignUp} />
       <Route exact path={"/signin"} component={SignIn} />
-      {/*  */}
       <Auth>
         <Route exact path={"(/)?"} component={Home} />
       </Auth>
