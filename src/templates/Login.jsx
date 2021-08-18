@@ -7,7 +7,7 @@ const Login = () => {
 
   return (
     <div>
-      <h2>ログイン〜２</h2>
+      <h2>ログイン〜</h2>
       <button onClick={() => dispatch(signIn())}>ログインする</button>
     </div>
   );
