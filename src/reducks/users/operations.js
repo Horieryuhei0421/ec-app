@@ -26,6 +26,22 @@ export const listenAuthState = () => {
   }
 }
 
+export const resetPassword = (email) => {
+  return async (dispatch) => {
+    if (email === "") {
+      alert("必修項目が未入力です")
+      return false
+    } else {
+      auth.sendPasswordResetEmail(email)
+        .then(() => {
+          alert("入力されたアドレスにパスワードリセット用のメールをお送りしました。")
+          dispatch(push("/signin"))
+        }).catch(() => {
+          alert("パスワードリセットに失敗しました。通信環境をご確認後に再度お試しください。")
+        })
+    }
+  }
+}
 
 export const signIn = (email, password) => {
   return async (dispatch) => {
@@ -86,5 +102,15 @@ export const signUp = (username, email, password, confirmPassword) => {
         }
       })
 
+  }
+}
+
+export const signOut = () => {
+  return async (dispatch) => {
+    auth.signOut()
+      .then(() => {
+        dispatch(signInAction())
+        dispatch(push("./signin"))
+      })
   }
 }
