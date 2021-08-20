@@ -1,9 +1,13 @@
+import { Description } from "@material-ui/icons";
 import React, { useCallback, useState } from "react";
-import { TextInput } from "../components/UIkid";
+import { useDispatch } from "react-redux";
+import { TextInput, SelectBox, PrimaryButton } from "../components/UIkid";
+import { saveProduct } from "../reducks/products/operations";
 
 const ProductEdit = () => {
+  const dispatch = useDispatch();
   const [name, setName] = useState(""),
-    [discription, setDiscription] = useState(""),
+    [description, setDescription] = useState(""),
     [category, setCategory] = useState(""),
     [gender, setGender] = useState(""),
     [price, setPrice] = useState("");
@@ -15,11 +19,11 @@ const ProductEdit = () => {
     [setName]
   );
 
-  const inputDiscription = useCallback(
+  const inputDescription = useCallback(
     (event) => {
-      setDiscription(event.target.value);
+      setDescription(event.target.value);
     },
-    [setDiscription]
+    [setDescription]
   );
 
   const inputPrice = useCallback(
@@ -28,6 +32,18 @@ const ProductEdit = () => {
     },
     [setPrice]
   );
+
+  const categories = [
+    { id: "tops", name: "トップス" },
+    { id: "shirts", name: "シャツ" },
+    { id: "pants", name: "パンツ" },
+  ];
+
+  const genders = [
+    { id: "all", name: "全て" },
+    { id: "male", name: "メンズ" },
+    { id: "female", name: "レディース" },
+  ];
 
   return (
     <section>
@@ -48,10 +64,24 @@ const ProductEdit = () => {
           label={"商品説明"}
           multiline={true}
           required={true}
-          onChange={inputDiscription}
+          onChange={inputDescription}
           rows={5}
-          value={discription}
+          value={description}
           type={"text"}
+        />
+        <SelectBox
+          label={"カテゴリー"}
+          required={true}
+          options={categories}
+          select={setCategory}
+          value={category}
+        />
+        <SelectBox
+          label={"性別"}
+          required={true}
+          options={genders}
+          select={setGender}
+          value={gender}
         />
         <TextInput
           fullWidth={true}
@@ -63,6 +93,15 @@ const ProductEdit = () => {
           value={price}
           type={"number"}
         />
+        <div className="mudule-spacer--medium" />
+        <div className="center">
+          <PrimaryButton
+            label={"商品情報の追加"}
+            onClick={() =>
+              dispatch(saveProduct(name, description, category, gender, price))
+            }
+          />
+        </div>
       </div>
     </section>
   );
