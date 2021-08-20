@@ -1,3 +1,4 @@
+import { push } from "connected-react-router";
 import React, { useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { PrimaryButton, TextInput } from "../components/UIkid";
@@ -53,6 +54,12 @@ const SignIn = () => {
           label={"Sign in"}
           onClick={() => dispatch(signIn(email, password))}
         />
+        <p onClick={() => dispatch(push("/signup"))}>
+          アカウントをお持ちでない方は
+        </p>
+        <p onClick={() => dispatch(push("/signin/reset"))}>
+          パスワードを忘れた方はこちらから
+        </p>
       </div>
       <div className="module-spacer--medium" />
     </div>
