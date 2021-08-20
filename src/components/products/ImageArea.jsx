@@ -14,6 +14,20 @@ const useStyles = makeStyles({
 const ImageArea = (props) => {
   const classes = useStyles();
 
+  const deleteImage = useCallback(
+    async (id) => {
+      const ret = window.confirm("この画像を削除しますか");
+      if (!ret) {
+        return false;
+      } else {
+        const newImages = props.images.filter((image) => image.id !== id);
+        props.setImages(newImages);
+        return storage.ref("images").child(id).delete();
+      }
+    },
+    [props.images]
+  );
+
   const uploadImage = useCallback(
     (event) => {
       const file = event.target.files;
@@ -45,7 +59,12 @@ const ImageArea = (props) => {
       <div className="p-grid__list-images">
         {props.images.length > 0 &&
           props.images.map((image) => (
-            <ImagePreview id={image.id} path={image.path} key={image.id} />
+            <ImagePreview
+              delete={deleteImage}
+              id={image.id}
+              path={image.path}
+              key={image.id}
+            />
           ))}
       </div>
       <div className="u-text-right">
