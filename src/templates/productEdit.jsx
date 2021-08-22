@@ -5,6 +5,7 @@ import ImageArea from "../components/products/ImageArea";
 import { TextInput, SelectBox, PrimaryButton } from "../components/UIkid";
 import { saveProduct } from "../reducks/products/operations";
 import { db } from "../firebase";
+import { SetSizeArea } from "../components/products";
 
 const ProductEdit = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,8 @@ const ProductEdit = () => {
     [category, setCategory] = useState(""),
     [gender, setGender] = useState(""),
     [images, setImages] = useState([]),
-    [price, setPrice] = useState("");
+    [price, setPrice] = useState(""),
+    [sizes, setSizes] = useState([]);
 
   const inputName = useCallback(
     (event) => {
@@ -67,6 +69,7 @@ const ProductEdit = () => {
           setCategory(data.category);
           setGender(data.gender);
           setPrice(data.price);
+          setSizes(data.sizes);
         });
     }
   }, [id]);
@@ -120,7 +123,9 @@ const ProductEdit = () => {
           value={price}
           type={"number"}
         />
-        <div className="mudule-spacer--medium" />
+        <div className="mudule-spacer--small" />
+        <SetSizeArea sizes={sizes} setSizes={setSizes} />
+        <div className="mudule-spacer--small" />
         <div className="center">
           <PrimaryButton
             label={"商品情報の追加"}
@@ -133,7 +138,8 @@ const ProductEdit = () => {
                   category,
                   gender,
                   price,
-                  images
+                  images,
+                  sizes
                 )
               )
             }
