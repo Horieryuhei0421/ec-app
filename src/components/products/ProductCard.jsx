@@ -7,9 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import NoImage from "../../assets/img/No_image.png";
 import { push } from "connected-react-router";
 import { useDispatch } from "react-redux";
-import { IconButton } from "@material-ui/core";
-import { Menu } from "@material-ui/core";
-import { MenuItem } from "@material-ui/core";
+import { IconButton, Menu, MenuItem } from "@material-ui/core";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { deleteProduct } from "../../reducks/products/operations";
 
