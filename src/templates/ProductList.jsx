@@ -15,7 +15,7 @@ const ProductList = () => {
   }, []);
 
   return (
-    <section className="c-section-wraoin">
+    <section className="c-section-wrapin">
       <div className="p-grid__row">
         {products.length > 0 &&
           products.map((product) => (
