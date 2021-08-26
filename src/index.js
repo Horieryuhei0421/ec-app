@@ -46,9 +46,9 @@ render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <MuiThemeProvider theme={theme}>
-        {/* <ErrorBoundary> */}
-        <App />
-        {/* </ErrorBoundary> */}
+        <MuiThemeProvider theme={theme}>
+          <App />
+        </MuiThemeProvider>
       </MuiThemeProvider>
     </ConnectedRouter>
   </Provider>,
