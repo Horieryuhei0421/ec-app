@@ -123,9 +123,9 @@ const ProductEdit = () => {
           value={price}
           type={"number"}
         />
-        <div className="mudule-spacer--small" />
+        <div className="module-spacer--small" />
         <SetSizeArea sizes={sizes} setSizes={setSizes} />
-        <div className="mudule-spacer--small" />
+        <div className="module-spacer--small" />
         <div className="center">
           <PrimaryButton
             label={"商品情報の追加"}
