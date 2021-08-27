@@ -88,18 +88,23 @@ export const signUp = (username, email, password, confirmPassword) => {
           const uid = user.uid
           const timestamp = FirebaseTimestamp.now()
           const userInitialData = {
+            customer_id: "",
             created_at: timestamp,
             email: email,
             role: "customer",
+            payment_method_id: "",
             uid: uid,
             updated_at: timestamp,
             username: username
-          }
+          };
           db.collection("users").doc(uid).set(userInitialData)
-            .then(() => {
+            .then(async () => {
               dispatch(push("/"))
             })
         }
+      }).catch((error) => {
+        alert('アカウント登録に失敗しました。もう1度お試しください。')
+        throw new Error(error)
       })
 
   }
