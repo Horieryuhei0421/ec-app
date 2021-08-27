@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import { makeStyles } from "@material-ui/styles";
 import { AppBar } from "@material-ui/core";
 import { Toolbar } from "@material-ui/core";
@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSignedIn } from "../../reducks/users/selectors";
 import { push } from "connected-react-router";
 import HeaderMenus from "./HeaderMenus";
+import ClosableDrawer from "./ClosableDrawer";
 
 const useStyles = makeStyles({
   root: {
@@ -31,6 +32,21 @@ const Header = () => {
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
   const isSignedIn = getSignedIn(selector);
+
+  const [open, setOpen] = useState(false);
+
+  const handleDrawerToggle = useCallback(
+    (event) => {
+      if (
+        event.type === "keydown" &&
+        (event.key === "Tab" || event.key === "Shift")
+      ) {
+        return;
+      }
+      setOpen(!open);
+    },
+    [open]
+  );
   return (
     <div classes={classes.root}>
       <AppBar position="fixed" className={classes.menuBar}>
@@ -43,11 +59,12 @@ const Header = () => {
           />
           {isSignedIn && (
             <div className={classes.iconButtons}>
-              <HeaderMenus />
+              <HeaderMenus handleDrawerToggle={handleDrawerToggle} />
             </div>
           )}
         </Toolbar>
       </AppBar>
+      <ClosableDrawer open={open} onClose={handleDrawerToggle} />
     </div>
   );
 };
