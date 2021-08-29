@@ -45,8 +45,9 @@ const Header = () => {
       }
       setOpen(!open);
     },
-    [open]
+    [setOpen, open]
   );
+
   return (
     <div classes={classes.root}>
       <AppBar position="fixed" className={classes.menuBar}>

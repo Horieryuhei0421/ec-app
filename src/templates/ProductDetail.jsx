@@ -81,10 +81,10 @@ const ProductDetail = () => {
           size: selectedSize,
         })
       );
+      console.log("遅れてる？");
     },
     [product]
   );
-
   return (
     <section className="c-section-wrapin">
       {product && (
