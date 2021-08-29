@@ -21,7 +21,6 @@ const useStyles = makeStyles({
 
 const SizeTable = (props) => {
   const classes = useStyles();
-  const sizes = props.sizes;
   return (
     <TableContainer>
       <Table aria-label="simple table">

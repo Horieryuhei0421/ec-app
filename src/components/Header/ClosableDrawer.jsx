@@ -94,7 +94,7 @@ const ClosableDrawer = (props) => {
         ModalProps={{ keepMounted: true }}
       >
         <div
-          onClick={(e) => {
+          onClose={(e) => {
             props.onClose(e);
           }}
           onKeyDown={(e) => {
