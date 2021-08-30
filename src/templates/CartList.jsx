@@ -6,8 +6,18 @@ import { CartListItem } from "../components/products/index";
 import { PrimaryButton } from "../components/UIkid";
 import { push } from "connected-react-router";
 import GreyButton from "../components/UIkid/GreyButton";
+import { makeStyles } from "@material-ui/styles";
+
+const useStyles = makeStyles({
+  root: {
+    margin: "0 auto",
+    maxWidth: 512,
+    width: "100%",
+  },
+});
 
 const CartList = () => {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
   const productsInCart = getProductsInCart(selector);
@@ -23,7 +33,7 @@ const CartList = () => {
   return (
     <section className="c-section-wrapin">
       <h2 className="u-text__headline">ショッピングカート</h2>
-      <List>
+      <List className={classes.root}>
         {productsInCart.length > 0 &&
           productsInCart.map((product) => (
             <CartListItem key={product.cartId} product={product} />
