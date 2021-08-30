@@ -81,7 +81,6 @@ const ProductDetail = () => {
           size: selectedSize,
         })
       );
-      console.log("遅れてる？");
     },
     [product]
   );
