@@ -37,9 +37,7 @@ export const addProductToCart = (addedProduct) => {
     const uid = getState().users.uid;
     const cartRef = db.collection('users').doc(uid).collection('cart').doc();
     addedProduct['cartId'] = cartRef.id;
-    console.log(addedProduct)
     await cartRef.set(addedProduct);
-    console.log(uid)
     dispatch(push('/'))
   }
 }
