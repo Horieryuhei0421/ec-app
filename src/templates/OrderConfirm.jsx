@@ -7,7 +7,7 @@ import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 // import { PrimaryButton, TextDetail } from "../components/UIkit";
 import { orderProduct } from "../reducks/products/operations";
-import { TextDetail } from "../components/UIkid/index";
+import { PrimaryButton, TextDetail } from "../components/UIkid/index";
 
 const useStyles = makeStyles((theme) => ({
   detailBox: {
@@ -50,6 +50,10 @@ const OrderConfirm = () => {
     [subtotal, shippingFee, tax]
   );
 
+  const order = useCallback(() => {
+    dispatch(orderProduct(productsInCart, total));
+  }, [productsInCart, total]);
+
   return (
     <section className="c-section-wrapin">
       <h2 className="u-text__headline">注文の確認</h2>
@@ -78,6 +82,7 @@ const OrderConfirm = () => {
             label={"合計(税込)"}
             value={"¥" + total.toLocaleString()}
           />
+          <PrimaryButton label={"注文を確定する"} onClick={order} />
         </div>
       </div>
     </section>
