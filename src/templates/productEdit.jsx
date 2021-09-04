@@ -18,6 +18,7 @@ const ProductEdit = () => {
   const [name, setName] = useState(""),
     [description, setDescription] = useState(""),
     [category, setCategory] = useState(""),
+    [categories, setCategories] = useState([]),
     [gender, setGender] = useState(""),
     [images, setImages] = useState([]),
     [price, setPrice] = useState(""),
@@ -44,12 +45,6 @@ const ProductEdit = () => {
     [setPrice]
   );
 
-  const categories = [
-    { id: "tops", name: "トップス" },
-    { id: "shirts", name: "シャツ" },
-    { id: "pants", name: "パンツ" },
-  ];
-
   const genders = [
     { id: "all", name: "全て" },
     { id: "male", name: "メンズ" },
@@ -73,6 +68,19 @@ const ProductEdit = () => {
         });
     }
   }, [id]);
+
+  useEffect(() => {
+    db.collection("categories")
+      .orderBy("order", "asc")
+      .get()
+      .then((snapshots) => {
+        const list = [];
+        snapshots.forEach((snapshot) => {
+          list.push(snapshot.data());
+        });
+        setCategories(list);
+      });
+  }, []);
 
   return (
     <section>
