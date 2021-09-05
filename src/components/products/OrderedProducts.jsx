@@ -31,7 +31,7 @@ const OrderedProducts = (props) => {
   const products = props.products;
 
   const goToProductDetail = useCallback((id) => {
-    dispatch(push("/product/" + id));
+    dispatch(push("/products/" + id));
   }, []);
 
   return (

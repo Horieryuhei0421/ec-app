@@ -9,7 +9,6 @@ import { SetSizeArea } from "../components/products";
 
 const ProductEdit = () => {
   const dispatch = useDispatch();
-
   let id = window.location.pathname.split("/product/edit")[1];
   if (id !== "") {
     id = id.split("/")[1];
