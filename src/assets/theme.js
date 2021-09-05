@@ -5,15 +5,15 @@ import { createTheme } from '@material-ui/core/styles';
 export const theme = createTheme({
   palette: {
     primary: {
-      light: '#88ffff',
-      main: '#4dd0e1',
-      dark: '#009faf',
+      light: '#c46b1b',
+      main: '#c46b1b',
+      dark: '#c46b1b',
       contrastText: '#000',
     },
     secondary: {
       light: '#ffff81',
       main: '#ffd54f',
-      dark: '#c8a415',
+      dark: '#c46b1b',
       contrastText: '#000',
     },
     grey: {
