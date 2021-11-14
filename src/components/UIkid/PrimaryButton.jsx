@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   button: {
     backgroundColor: "#e38530",
     color: "#000",
@@ -10,8 +10,11 @@ const useStyles = makeStyles({
     height: 48,
     marginBottom: 16,
     width: 256,
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 14,
+    },
   },
-});
+}));
 
 const PrimaryButton = (props) => {
   const classes = useStyles();

@@ -42,7 +42,7 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
   const path = selector.router.location.pathname;
-  const id = path.split("/product/")[1];
+  const id = path.split("/products/")[1];
 
   const [product, setProduct] = useState(null);
 

@@ -59,6 +59,10 @@ const ClosableDrawer = (props) => {
     props.onClose(event);
   };
 
+  useEffect(() => {
+    console.log("useEffect");
+  });
+
   const [filters, setFilters] = useState([
     { func: selectMenu, label: "すべて", id: "all", value: "/" },
     { func: selectMenu, label: "メンズ", id: "male", value: "/?gender=male" },
