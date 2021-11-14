@@ -12,6 +12,7 @@ const ProductEdit = () => {
   let id = window.location.pathname.split("/product/edit")[1];
   if (id !== "") {
     id = id.split("/")[1];
+    console.log(id);
   }
 
   const [name, setName] = useState(""),

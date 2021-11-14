@@ -1,4 +1,4 @@
-import { signInAction, fetchProductsInCartAction, fetchOrdersHistoryAction } from "./actions";
+import { signInAction, signOutAction, fetchProductsInCartAction, fetchOrdersHistoryAction } from "./actions";
 import { push } from "connected-react-router";
 import { auth, db, FirebaseTimestamp } from "../../firebase/index"
 
@@ -148,7 +148,7 @@ export const signOut = () => {
   return async (dispatch) => {
     auth.signOut()
       .then(() => {
-        dispatch(signInAction())
+        dispatch(signOutAction())
         dispatch(push("./signin"))
       })
   }
